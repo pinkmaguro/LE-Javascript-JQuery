@@ -1,0 +1,27 @@
+body {
+  margin: 40px;
+}
+
+.board {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: repeat(5, 100px);
+  grid-auto-flow: row;
+}
+.card {
+  background-color: black;
+  width: 100px;
+  border: 1px solid black;
+  height: 100px;
+  margin: 25px;
+  font-size: 40pt;
+}
+
+.front {
+  background-color: lightgrey;
+}
+
+.opened {
+  background-color: lightgrey;
+}

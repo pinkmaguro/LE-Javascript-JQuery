@@ -209,3 +209,72 @@ $(document).bind('ready', function(){...})
                         borderWidth: "10px"
                     }, 3000);
 ----
+
+@Cdoe
+----
+        <script>$('input[type="button"]').click( function(e) {
+                var $this = $(e.target);
+                switch($this.attr('id')) {
+                    case 'fadeout':
+                        $('#target').fadeOut('slow');
+                        break;
+                    case 'fadein':
+                        $('#target').fadeIn('slow');
+                        break;
+                    case 'hide':
+                        $('#target').hide();
+                        break;
+                    case 'show':
+                        $('#target').show();
+                        break;
+                    case 'slidedown':
+                        $('#target').hide().slideDown('slow');
+                        break;
+                    case 'slideup':
+                        $('#target').slideUp('slow');
+                        break;
+                    case 'mix':
+                        $('#target').fadeOut('slow').fadeIn('slow').delay(1000).slideUp().slideDown('slow', function(){alert('end')});
+                        break;
+                }
+            }) 
+        </script>
+----
+- 'input[type="button"]' 에서 바깥 따옴표와 안쪽 따옴표는 다른 종류를 사용해야하며 그러면 type 을 지정할 떄 어떤 따옴표를 사용해도 선택할 수 있다.
+- 이벹트가 발생한 객체를 가져와서 변수에 저장한다.
+- swtich 문에서의 인자는 스트링이다.
+- 애니메이션 액션은 hide() 와 show() 면 충분하다.
+
+----
+
+@T Ajax
+@Code
+----
+  $.ajax({
+    url: '/_predict',
+    type: 'POST',
+    data: JSON.stringify(sendData),
+    dataType:'json',
+    contentType: 'application/json; charset=UTF-8',
+    success: function(data){
+      console.log("result!!!!!");
+      console.log(data)
+      $('#result').html("<H1>"+data+"</H1>").css("color","red");
+    },
+    error: function(error_msg){
+    }
+  })
+----
+
+@T grid 만드는 법 중의 하나
+@Code
+----
+        .broard {
+            width: 600px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(5, 100px);
+            grid-template-rows: repeat(5, 100px);
+            grid-auto-flow: row;
+            }
+----
