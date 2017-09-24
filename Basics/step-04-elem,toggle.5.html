@@ -1,0 +1,52 @@
+<html>
+        <head>
+            <style>
+                p {
+                    background: #21A095;
+                }
+
+                P strong {
+                    color:deeppink
+                }
+
+                .highlight {
+                    background:yellow;
+                }
+            </style>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type='text/javascript'>
+                $(document).bind('ready', function(){
+                    $("p:eq(0)").append("<strong> - Okarina </strong>");
+                    $("p:eq(1)").after("<strong> - Muzura </strong>");
+                    $("strong").wrap("<I></I>");
+                    
+                })            
+            </script>
+        </head>
+        <body>
+            <p>
+                Legend of Zelda
+            </p>
+            
+            <p>
+                Legend of Zelda
+            </p>
+
+            <div>
+                <p class='blue'>item 1</p>
+                <p class='blue'>item 2</p>
+                <p class='blue'>item 3</p>
+                <p class='blue'>item 4</p>
+                <script>$('div p').click(function(){$(this).toggleClass('highlight')});</script>
+            </div>
+
+            <input id='typehere' type="text" value="some text"/>
+            <p>Your name</p>
+            <script>$("#typehere").keyup( function () {
+                var value = $(this).val();
+                $("p:last").text(value);
+            }).keyup();</script>
+        </body>
+
+
+    </html>

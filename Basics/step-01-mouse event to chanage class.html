@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <!--<script src="jquery-3.2.1.min.js"></script>-->
+        <script type="text/javascript">
+            $('#navigation li').live(
+                {'click': function(event) {
+                    console.log('Clicked - #navigation li - ' + $(this).text())
+                    $('#navigation li').removeClass('selected hover');
+                    $(this).addClass('selected');
+                },
+                'mouseover': function(event) {
+                    console.log('Mouse over - ' + $(this).text())
+                    $('#navigation li').removeClass('hover');
+                    if (!$(this).hasClass('selected')) {
+                        $(this).addClass('hover')
+                    }
+                },
+                'mouseout': function(event) {
+                    console.log('Mouse out - ' + $(this).text())
+                    $(this).removeClass('hover');
+                }
+            }
+        );
+        </script>
+        <style type="text/css">
+            #navigation li {
+                list-style:none;
+                float:left;
+                padding:5px;
+            }
+            #navigation {
+                cursor:pointer;
+            }
+            #navigation .selected {
+                background-color:red;
+                color:white;
+            }
+            #navigation .hover {
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="navigation">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>javascript</li>
+            <li class="selected">jQuery</li>
+            <li>PHP</li>
+            <li>mysql</li>
+        </ul>
+    </body>
+</html>
