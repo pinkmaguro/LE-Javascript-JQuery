@@ -3,9 +3,11 @@
 
 @T JQuery 사용 선언하는 법
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> << 높은 버전
 
 @PM JQuery 다운받은 파일을 사용할 떄 작동하지 않는다.
-<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery-3.2.1.min.js"></script> << 작동 안함
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> << 작동함
 
 @Code 마우스 클릭한 DOM 객체의 클래스를 변경해서 배경색 바꾸기
 ----
@@ -278,3 +280,82 @@ $(document).bind('ready', function(){...})
             grid-auto-flow: row;
             }
 ----
+
+@T 이벤트의 종류
+@T- 마우스 이벤트
+- 클릭  click()
+- 더블클릭  dbclick()  
+- 움직임 mousemove()
+- 겹침 hover()
+- 벗어남 mouseleave()
+
+- mouseout()  ?
+
+@T <a> 태그의 액션을 막는 방법
+- 클릭 이벤트 함수가 false 를 리턴하게 한다.
+- 클릭 이벤트에 대해서 preventDefaut() 함수를 호출한다.
+
+@T 왠만한 이벤트 메쏘드는 두 가지 기능이 있는 것 같다.
+mouseover() 는 선택한 요소에 마우스를 올릴 때 이벤트를 발생시키기도 하고,
+선택한 요소에 마우스를 올려놓는 이벤트를 발생시키기도 한다.
+
+@Code
+----
+        $('#btn2').hover(function (){
+            console.log('button2 hover event')
+            
+            $('P').css('background-color', 'green')
+        }, function(){
+            $('P').css('background-color', 'aqua')
+        });
+----
+- hover 의 경우에는 mouseover 와 mouseout 이벤트에 대한 함수를 연속해서 써줄 수 있다.
+- live 와 bind 의 차이점은 무엇일까? 이벤트 동작에 대해서는 바꿔써줘도 변화가 없다.
+----
+
+@T mouseover, mouseout 과 mouseenter, mouseleaver 의 차이점
+전자는 선택 요소를 기준 후자는 선택 요소의 경계를 기준으로 이벤트를 발생시킨다.
+예를들어 ul 안에 li 가 있을 떄 mouseleave 는 리스트 전체의 범위를 벗어나야지 이벤트를 발생시키지만
+mouseout은 ul 에서 li 로 마우스가 이동했을 때도 이벤트를 발생시킨다.
+
+@T 사용자 편의를 위해서 키보드와 마우스 이벤트를 같이 처리하는 것이 좋다고 한다.
+
+@T 키보드 이벤트 : keydown, keyup, keypress
+- keydown 이벤트에서는 눌러진 자판에 대한 고유 키코드 값을 받아올 수 있지만
+keypress 이벤트에서는 할 수 없다.
+- 고유키 값이라면.. a 를 입력하면 키보드 이벤트는 A 이고 입력된 문자는 a 이다.
+shift 키를 누는 것은 keydown 으로 키보드 값을 얻을 수 있지만 실제 어떤 문자가 입력되는 것은 아니므로 
+keypress 이벤트로는 shift 키에 대한 이벤트를 받아올 수 없다.
+
+@T 그룹 이벤트 등록 및 삭제하기
+- on() : 선택한 요소에 한 개 이상의 이벤트를 등록. 제이쿼리 1.7 이상부터 지원
+        동적으로 생성된 이벤트를 등록한 요소와 동일한 새 요소에도 이벤트가 등록됨
+- live() : on()과 비슷함 제이쿼리 1.9 부터는 지원하지 않음
+- bind() : 이역시 한 개 이상으 ㅣ이벤트를 등록할 수 있음.
+- delegate() : 선택한 요소에 지정한 하위 요소에 이벤트를 등록.
+
+@T on 함수는 1.7 부터 지원함
+
+@T Ajax 관련 메쏘드
+- load()
+- $.ajax()  데이터를 서버에 전송 가능. HTML, XML, JSON, 텍스트 유형의데이터를 요청할 수 있는 메쏘드,  
+$.post(), $.get(), $getJSON() 기능을 합쳐놓은 것
+- serialize() 'name1=value1&name2=value2...' 쿼리 스트링 형식의 데이터로 전송
+- serializeArray() key1:val1,key2:val2... JSON 데이터로 변환하여 액션 페이지에 전송
+- .ajaxSuccess(func(){}) ajax 요청이 성공적으로 완료되면 함수를 실행함
+
+@T $.ajax()
+----
+$.ajax({
+url : '전송 페이지'
+type: '전송 방식'
+data: '전송할 데이터'
+dataType: '요청한 데이터 타입' (html, xml, json, text, jsonp)
+success: function(result) { }  # result 는 요청한 데이터
+});
+----
+
+@T ajax 테스트
+https://jsonplaceholder.typicode.com/
+
+

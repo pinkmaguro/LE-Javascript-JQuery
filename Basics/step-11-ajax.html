@@ -1,0 +1,21 @@
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+<script type='text/javascript'>
+$(function(){
+  var root = 'https://jsonplaceholder.typicode.com';
+
+    $.ajax({
+    url: root + '/posts/1',
+    method: 'GET'
+  }).then(function(data) {
+    console.log(data);
+  });
+
+  });
+  
+</script>
+
+<body>
+
+     
+</body>

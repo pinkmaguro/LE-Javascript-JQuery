@@ -1,0 +1,16 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $(document).bind('mousemove', function(e){
+            var x = e.pageX;
+            var y = e.pageY
+            $('P').text('X :' + x + '  Y: ' + y)
+        })
+
+    })
+</script>
+
+<body>
+
+    <P></P>
+</body>

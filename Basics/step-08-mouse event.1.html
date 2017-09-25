@@ -1,0 +1,42 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#btn1').mouseover(function(){
+            console.log('button 1 mouseover')
+            $('p').css('background-color', 'purple');
+        });
+
+        $('#btn1').mouseout(function(){
+            console.log('button 1 mouseout')
+            $('p').css('background-color', 'yellow');
+        });
+
+        $('#btn2').hover(function (){
+            console.log('button2 hover event')
+            
+            $('P').css('background-color', 'green')
+        }, function(){
+            $('P').css('background-color', 'aqua')
+        });
+
+        $('#btn3').bind( {
+        'mouseover': function() {
+            console.log('btn3 mouseover')
+            $('p').css('background-color', 'purple');
+        },
+        'mouseout': function() {
+            console.log('btn3 mouseout')
+            $('p').css('background-color', 'yellow');
+        }
+    })
+
+    })
+</script>
+
+<body>
+    <button id='btn1'>mouseover/out</button>
+    <button id='btn2'>hover</button>
+    <button id='btn3'>mouseover/out</button>
+
+    <P>내용</P>
+</body>

@@ -1,0 +1,26 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#btn1').click(function(){
+            console.log('button 1 clicked')
+            $('p').css('background-color', 'purple');
+            console.log('Did the bgc change?')
+            return false;
+        });
+
+        $('#btn2').bind('click', function (event){
+            console.log('button2 clicked')
+            event.preventDefault();  // inactivate default tag action
+            $('P').css('background-color', 'yellow')
+        })
+
+    })
+</script>
+
+<body>
+    <a href='http://w3.org/' id='btn1'>Button 1</a><br/>
+    <a href='http://w3.org/' id='btn2'>Button 2</a><br/>
+    <a href='http://w3.org/' id='btn3'>Button 3</a><br/>
+
+    <P>내용</P>
+</body>
